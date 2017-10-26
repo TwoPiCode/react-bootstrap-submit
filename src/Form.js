@@ -202,13 +202,23 @@ export default class Form extends InputContainer {
   _validateAll(context) {
     let isValid = true;
     let errors = [];
-
-    Object.keys(this._inputs).forEach(iptName => {
-      if (!this._validateOne(iptName, context)) {
+    if (typeof this.props.validateAll === 'function') {
+      let result = this.props.validateAll(context);
+      if (result !== true) {
         isValid = false;
-        errors.push(iptName);
+        Object.keys(result).forEach(iptName => {
+          errors.push(iptName);
+          this._setError(iptName, true, result[iptName]);
+        });
       }
-    });
+    } else {
+      Object.keys(this._inputs).forEach(iptName => {
+        if (!this._validateOne(iptName, context)) {
+          isValid = false;
+          errors.push(iptName);
+        }
+      });
+    }
 
     return {
       isValid: isValid,
