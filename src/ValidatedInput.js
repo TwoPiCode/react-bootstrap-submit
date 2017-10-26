@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {FormControl, FormGroup, ControlLabel, HelpBlock} from 'react-bootstrap';
+import {FormControl, FormGroup, ControlLabel, HelpBlock, InputGroupAddon} from 'react-bootstrap';
 
 export default class ValidatedInput extends React.Component {
   constructor(props) {
@@ -50,6 +50,11 @@ export default class ValidatedInput extends React.Component {
               {this.inputProps.label}
             </ControlLabel>
           }
+
+          {this.inputProps.prefixLabel && 
+            <InputGroupAddon>{this.inputProps.prefixLabel}</InputGroupAddon>
+          }
+
           <div className={this.props.wrapperClassName}>
             <FormControl
               ref='input'
@@ -57,6 +62,11 @@ export default class ValidatedInput extends React.Component {
               value={this.props.value} />
             {this.props.help && <HelpBlock>{this.props.help}</HelpBlock>}
           </div>
+
+          {this.inputProps.suffixLabel && 
+            <InputGroupAddon>{this.inputProps.suffixLabel}</InputGroupAddon>
+          }
+
         </FormGroup>
       );
   }
