@@ -4,6 +4,7 @@ import InputContainer from './InputContainer';
 import ValidatedInput from './ValidatedInput';
 import RadioGroup from './RadioGroup';
 import Validator from './Validator';
+import createFragment from 'react-addons-create-fragment'
 
 function getInputErrorMessage(input, ruleName) {
   let errorHelp = input.props.errorHelp;
@@ -127,7 +128,7 @@ export default class Form extends InputContainer {
         } else if (typeof child.props.errorHelp === 'string') {
           newProps.help = child.props.errorHelp;
         } else if (child.props.errorHelp) {
-          newProps.help = React.addons.createFragment(child.props.errorHelp);
+          newProps.help = createFragment(child.props.errorHelp);
         }
       }
 
