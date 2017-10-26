@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {FormControl, FormGroup, ControlLabel, HelpBlock, InputGroupAddon} from 'react-bootstrap';
+import {FormControl, FormGroup, ControlLabel, HelpBlock, InputGroup } from 'react-bootstrap';
 
 export default class ValidatedInput extends React.Component {
   constructor(props) {
@@ -12,6 +12,8 @@ export default class ValidatedInput extends React.Component {
       validate,
       errorHelp,
       help,
+      prefixLabel,
+      suffixLabel,
       groupClassName,
       labelClassName,
       wrapperClassName,
@@ -46,26 +48,33 @@ export default class ValidatedInput extends React.Component {
           validationState={this.props.validationState} >
 
           {this.inputProps.label &&
+            
             <ControlLabel className={this.props.labelClassName}>
               {this.inputProps.label}
             </ControlLabel>
           }
 
-          {this.inputProps.prefixLabel && 
-            <InputGroupAddon>{this.inputProps.prefixLabel}</InputGroupAddon>
-          }
-
           <div className={this.props.wrapperClassName}>
+
+          <InputGroup>
+
+            {this.props.prefixLabel && 
+              <InputGroup.Addon>{this.props.prefixLabel}</InputGroup.Addon>
+            }
+
             <FormControl
               ref='input'
               {...this.inputProps}
               value={this.props.value} />
             {this.props.help && <HelpBlock>{this.props.help}</HelpBlock>}
-          </div>
 
-          {this.inputProps.suffixLabel && 
-            <InputGroupAddon>{this.inputProps.suffixLabel}</InputGroupAddon>
-          }
+            {this.props.suffixLabel && 
+              <InputGroup.Addon>{this.props.suffixLabel}</InputGroup.Addon>
+            }
+
+            </InputGroup>
+
+          </div>
 
         </FormGroup>
       );
