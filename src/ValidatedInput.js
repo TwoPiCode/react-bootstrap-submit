@@ -54,9 +54,7 @@ export default class ValidatedInput extends React.Component {
             </ControlLabel>
           }
 
-          <div className={this.props.wrapperClassName}>
-
-          <InputGroup>
+          <div className="input-group">
 
             {this.props.prefixLabel && 
               <InputGroup.Addon>{this.props.prefixLabel}</InputGroup.Addon>
@@ -71,8 +69,6 @@ export default class ValidatedInput extends React.Component {
             {this.props.suffixLabel && 
               <InputGroup.Addon>{this.props.suffixLabel}</InputGroup.Addon>
             }
-
-            </InputGroup>
 
           </div>
 
