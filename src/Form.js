@@ -274,7 +274,7 @@ export default class Form extends InputContainer {
 
       return false;
     }
-
+    
     let value;
 
     if (input.props.type === 'checkbox') {
@@ -283,6 +283,7 @@ export default class Form extends InputContainer {
       value = input.getValue();
     }
 
+    console.log("Value for " + iptName + " is " + value)
     return value;
   }
 
@@ -292,6 +293,8 @@ export default class Form extends InputContainer {
     }
 
     let values = this.getValues();
+    console.log("Form Values:")
+    console.log(values)
 
     let { isValid, errors } = this._validateAll(values);
 
